@@ -12,64 +12,34 @@
 
 int main()
 {
-    int arr[10], arr_sort[10];
-    int last_num = 10, min_num = 0;
+    int arr[10];
+    int min_num = 0, swap = 0;
 
     printf("Введите элементы массива через пробел: \n");
     for(int i = 0; i < 10; i++)
     {
         scanf("%d", &arr[i]);
     }
-    min_num = 9;
-    printf("%d \n", min_num);
-    for(int i = 0; i < 10; i++)
+
+    for(int i = 0; i < 9; i++)
     {
-        for(int j = 1; j < 10; j++)
-        {
-
-            if (j != last_num)
+        for (int j = i+1; j < 10; j ++)
+            if( (arr[j] % 10) < (arr[min_num] % 10) ) 
             {
-                if((arr[j]%10) < (min_num%10))
-                {
-                    min_num = arr[j];
-                    last_num = j;
-                }
+                min_num = j;
             }
-        }
-        //printf("%d ", min_num);
-        arr_sort[i] = min_num;
-        //last_num = min_num%10;
-        min_num = 9;
+            if( min_num != i ) 
+            {
+                swap = arr[i];
+                arr[i] = arr [min_num];
+                arr [min_num] = swap;
+            }
 
-        //printf(" last num = %d", last_num);
     }
     printf("\n");
     for(int i = 0; i < 10; i++)
     {
-        printf("%d ", arr_sort[i]);
+        printf("%d ", arr[i]);
     }
 
 }
-
-
-/*
-if((arr[j]%10) == last_num)
-            {
-                count++;
-            }
-            else
-                if((arr[j]%10) < min_num)
-                {
-                    min_num = arr[j];
-                }
-            if (count > 1)
-            {
-                min_num = arr[j];
-            }
-            
-        }
-        printf("%d ", min_num);
-        arr_sort[i] = min_num;
-        
-        last_num = min_num%10;
-*/
